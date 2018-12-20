@@ -150,3 +150,6 @@ def compileUi(uifile, pyfile, execute=False, indent=4, from_imports=False):
 
 # The list of directories that are searched for widget plugins.
 from .objcreator import widgetPluginPath
+
+# The script
+from .main import main

@@ -23,17 +23,18 @@
 
 import sys
 import optparse
+from qtpyuic import __version__
+from .driver import Driver
 
-
-Version = "pyqt User Interface Compiler version %s." % (PySideUicVersion, PySideVersion)
+Version = "pyqt User Interface Compiler version %s." % (__version__)
 
 def main():
     if sys.hexversion >= 0x03000000:
-        from pyside2uic.port_v3.invoke import invoke
+        from .port_v3.invoke import invoke
     else:
-        from pyside2uic.port_v2.invoke import invoke
+        from .port_v2.invoke import invoke
 
-    parser = optparse.OptionParser(usage="pyside2-uic [options] <ui-file>",
+    parser = optparse.OptionParser(usage="qtpy-uic [options] <ui-file>",
             version=Version)
     parser.add_option("-p", "--preview", dest="preview", action="store_true",
             default=False,
