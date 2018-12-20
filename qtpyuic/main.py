@@ -23,8 +23,11 @@
 
 import sys
 import optparse
-from ._version import __version__
 from .driver import Driver
+
+from ._version import get_versions
+__version__ = get_versions()['version']
+del get_versions
 
 Version = "pyqt User Interface Compiler version %s." % (__version__)
 

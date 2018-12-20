@@ -1,3 +1,3 @@
 .gitignore      export-ignore
 .gitattributes   export-ignore
-qtpyuic/_static_version.py export-subst
+qtpyuic/_version.py export-subst

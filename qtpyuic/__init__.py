@@ -33,4 +33,7 @@ from .objcreator import widgetPluginPath
 
 # The script
 from .main import main
-__version__ = "2.0.1"
+
+from ._version import get_versions
+__version__ = get_versions()['version']
+del get_versions
