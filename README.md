@@ -1,7 +1,22 @@
-Tools
-=====
+# qtpy-uic
 
-PySide development tools (pyuic and pyrcc)
+qtpy ui compiler: qtpy-uic
+
+Based on the pyside2-uic tool.
+
+The main advantage of this tool is that it does not require any installation of
+PySide2, PyQt5, or qtpy to function, but generates code compatible with
+qtpy.
+
+## Usage
+
+```
+qtpy-uic --help
+qtpy-uic -o myui.py myui.ui
+```
+
+
+### Notes from the PySide2 Tools repository
 
 This repository is the tools for PySide2. If you would like to install PySide2, please go to [pyside2-setup](https://github.com/PySide/pyside2-setup) for instructions.
 
