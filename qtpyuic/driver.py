@@ -24,7 +24,7 @@
 import sys
 import logging
 
-from qtpyuic import compileUi
+from .Compiler import compileUi
 
 
 class Driver(object):
