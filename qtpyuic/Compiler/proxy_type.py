@@ -42,7 +42,7 @@ class ProxyType(type):
                 raise
 
             # Avoid a circular import.
-            from pyside2uic.Compiler.qtproxies import LiteralProxyClass
+            from .qtproxies import LiteralProxyClass
 
             return type(name, (LiteralProxyClass, ),
                         {"module": moduleMember(type.__getattribute__(cls, "module"),

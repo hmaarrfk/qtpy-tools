@@ -24,7 +24,7 @@
 import sys
 import logging
 
-from pyside2uic import compileUi
+from qtpyuic import compileUi
 
 
 class Driver(object):
