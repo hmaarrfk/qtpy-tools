@@ -19,7 +19,7 @@ def get_version_and_cmdclass(package_path):
 version, cmdclass = get_version_and_cmdclass('qtpyuic')
 
 setup(
-    name='qtpyuic',
+    name='qtpy-uic',
     version=version,
     cmdclass=cmdclass,
     description='Qt UI compiler to qtpy',
@@ -50,7 +50,7 @@ setup(
     #
     #   py_modules=["my_module"],
     #
-    packages=find_packages(include=['qtpyuic']),  # Required
+    packages=find_packages(),  # Required
     install_requires=[],
     # If there are data files included in your packages that need to be
     # installed, specify them here.
