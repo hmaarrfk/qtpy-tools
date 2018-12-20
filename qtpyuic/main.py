@@ -23,7 +23,7 @@
 
 import sys
 import optparse
-from qtpyuic import __version__
+from ._version import __version__
 from .driver import Driver
 
 Version = "pyqt User Interface Compiler version %s." % (__version__)

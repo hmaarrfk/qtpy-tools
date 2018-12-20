@@ -26,8 +26,6 @@
 
 __all__ = ("compileUi", "compileUiDir", "widgetPluginPath")
 
-__version__ = "2.0.0"
-
 from .Compiler import compileUiDir, compileUi
 
 # The list of directories that are searched for widget plugins.
@@ -35,3 +33,4 @@ from .objcreator import widgetPluginPath
 
 # The script
 from .main import main
+from ._version import __version__

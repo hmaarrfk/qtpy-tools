@@ -6,9 +6,22 @@ from os import path
 with open('README.md') as f:
     long_description = f.read()
 
+# Loads version.py module without importing the whole package.
+def get_version_and_cmdclass(package_path):
+    import os
+    from importlib.util import module_from_spec, spec_from_file_location
+    spec = spec_from_file_location('version',
+                                   os.path.join(package_path, '_version.py'))
+    module = module_from_spec(spec)
+    spec.loader.exec_module(module)
+    return module.__version__, module.cmdclass
+
+version, cmdclass = get_version_and_cmdclass('qtpyuic')
+
 setup(
     name='qtpyuic',
-    version='2.0.0',
+    version=version,
+    cmdclass=cmdclass,
     description='Qt UI compiler to qtpy',
     long_description=long_description,
     long_description_content_type='text/markdown',

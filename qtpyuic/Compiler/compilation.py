@@ -1,4 +1,4 @@
-from qtpyuic import __version__
+from .._version import __version__
 from . import indenter
 from . import compiler
 
