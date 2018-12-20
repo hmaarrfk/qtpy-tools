@@ -1,3 +1,7 @@
+# This file was modified from that of the PySide Project.
+# It is made to be compatible with qtpy
+# Copyright (C) 2018 Mark Harfouche
+#
 # This file is part of the PySide project.
 #
 # Copyright (C) 2009-2011 Nokia Corporation and/or its subsidiary(-ies).
@@ -22,16 +26,16 @@
 
 __all__ = ("compileUi", "compileUiDir", "widgetPluginPath")
 
-__version__ = "@pyside_tools_VERSION@"
+__version__ = "2.0.0"
 
-from pyside2uic.Compiler import indenter, compiler
+from .Compiler import indenter, compiler
 
 _header = """# -*- coding: utf-8 -*-
 
 # Form implementation generated from reading ui file '%s'
 #
 # Created: %s
-#      by: pyside2-uic %s running on PySide2 %s
+#      by: qtpy-uic %s
 #
 # WARNING! All changes made in this file will be lost!
 
@@ -127,7 +131,6 @@ def compileUi(uifile, pyfile, execute=False, indent=4, from_imports=False):
     """
 
     from time import ctime
-    import PySide2
 
     try:
         uifname = uifile.name
@@ -137,7 +140,7 @@ def compileUi(uifile, pyfile, execute=False, indent=4, from_imports=False):
     indenter.indentwidth = indent
 
     global PySideToolsVersion
-    pyfile.write(_header % (uifname, ctime(), __version__, PySide2.__version__))
+    pyfile.write(_header % (uifname, ctime(), __version__))
 
     winfo = compiler.UICompiler().compileUi(uifile, pyfile, from_imports)
 
@@ -146,4 +149,4 @@ def compileUi(uifile, pyfile, execute=False, indent=4, from_imports=False):
 
 
 # The list of directories that are searched for widget plugins.
-from pyside2uic.objcreator import widgetPluginPath
+from .objcreator import widgetPluginPath

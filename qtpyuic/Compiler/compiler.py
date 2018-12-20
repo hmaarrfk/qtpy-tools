@@ -22,32 +22,31 @@
 
 import sys
 
-from pyside2uic.properties import Properties
-from pyside2uic.uiparser import UIParser
-from pyside2uic.Compiler import qtproxies
-from pyside2uic.Compiler.indenter import createCodeIndenter, getIndenter, \
-        write_code
-from pyside2uic.Compiler.qobjectcreator import CompilerCreatorPolicy
-from pyside2uic.Compiler.misc import write_import
+from ..properties import Properties
+from ..uiparser import UIParser
+from .qtproxies import QtCore, QtGui, QtWidgets, i18n_strings, i18n_context
+from .indenter import createCodeIndenter, getIndenter, write_code
+from .qobjectcreator import CompilerCreatorPolicy
+from .misc import write_import
 
 
 class UICompiler(UIParser):
     def __init__(self):
-        UIParser.__init__(self, qtproxies.QtCore, qtproxies.QtGui, qtproxies.QtWidgets,
+        UIParser.__init__(self, QtCore, QtGui, QtWidgets,
                 CompilerCreatorPolicy())
 
     def reset(self):
-        qtproxies.i18n_strings = []
+        i18n_strings = []
         UIParser.reset(self)
 
     def setContext(self, context):
-        qtproxies.i18n_context = context
+        i18n_context = context
 
     def createToplevelWidget(self, classname, widgetname):
         indenter = getIndenter()
         indenter.level = 0
 
-        indenter.write("from PySide2 import QtCore, QtGui, QtWidgets")
+        indenter.write("from qtpy import QtCore, QtGui, QtWidgets")
         indenter.write("")
 
         indenter.write("class Ui_%s(object):" % self.uiname)
@@ -73,8 +72,8 @@ class UICompiler(UIParser):
         indenter.write("def retranslateUi(self, %s):" % self.toplevelWidget)
         indenter.indent()
 
-        if qtproxies.i18n_strings:
-            for s in qtproxies.i18n_strings:
+        if i18n_strings:
+            for s in i18n_strings:
                 indenter.write(s)
         else:
             indenter.write("pass")

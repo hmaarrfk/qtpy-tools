@@ -32,7 +32,7 @@ class Driver(object):
     called by code that is Python v2/v3 specific.
     """
 
-    LOGGER_NAME = 'PySide2.uic'
+    LOGGER_NAME = 'qtpy.uic'
 
     def __init__(self, opts, ui_file):
         """ Initialise the object.  opts is the parsed options.  ui_file is the
@@ -66,9 +66,9 @@ class Driver(object):
         the parent process.
         """
 
-        from PySide2 import QtUiTools
-        from PySide2 import QtGui
-        from PySide2 import QtWidgets
+        from qtpy import QtUiTools
+        from qtpy import QtGui
+        from qtpy import QtWidgets
 
         app = QtWidgets.QApplication([self._ui_file])
         widget = QtUiTools.QUiLoader().load(self._ui_file)
@@ -108,7 +108,7 @@ class Driver(object):
         """ Handle a NoSuchWidgetError exception. """
 
         if e.args[0].startswith("Q3"):
-            sys.stderr.write("Error: Q3Support widgets are not supported by PySide2.\n")
+            sys.stderr.write("Error: Q3Support widgets are not supported by qtpy.\n")
         else:
             sys.stderr.write(str(e) + "\n")
 
@@ -120,9 +120,9 @@ class Driver(object):
 
             traceback.print_exception(*sys.exc_info())
         else:
-            from PySide2 import QtCore
+            from qtpy import QtCore
 
             sys.stderr.write("""An unexpected error occurred.
-Check that you are using the latest version of PySide2 and report the error to
+Check that you are using the latest version of qtpy and report the error to
 http://bugs.openbossa.org, including the ui file used to trigger the error.
 """)

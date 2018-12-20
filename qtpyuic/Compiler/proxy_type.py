@@ -20,7 +20,7 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA
 # 02110-1301 USA
 
-from pyside2uic.Compiler.misc import Literal, moduleMember
+from .misc import Literal, moduleMember
 
 
 class ProxyType(type):
