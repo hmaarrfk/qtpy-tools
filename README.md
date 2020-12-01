@@ -34,3 +34,8 @@ Resources:
     The PySide2-tools project
   * [PySide2-examples](https://github.com/PySide/pyside2-examples)
     The PySide2 example scripts
+
+### Changes
+
+#### 0.2.5
+- Support for Python 3.9.
